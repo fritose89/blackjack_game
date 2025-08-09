@@ -1,12 +1,16 @@
 import java.util.Scanner;
-
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class Game{
 
 	public static void main(String[] args){
 
-		
+			SecureRandom random = new SecureRandom();
+			int minCut = 209;
+			int maxCut = 333;
+			int range = maxCut - minCut + 1;
+			
 			Scanner scanner = new Scanner(System.in);
 
 			System.out.println("Welcome to Blackjack!");
@@ -20,8 +24,7 @@ public class Game{
 			//Shuffling deck object
 			deck.shuffle();
 
-			//Burning top card
-			deck.remove(0);
+			
 
 
 
