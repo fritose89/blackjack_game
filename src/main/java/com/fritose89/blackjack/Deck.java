@@ -4,7 +4,7 @@ public class Deck{
 	private final List<Card> deck = new ArrayList<>();
 
 	//Deck constructor
-	Deck(int numDecks){
+	public Deck(int numDecks){
 		for(int i = 0; i < numDecks; i++){
 			for(Suit suit : Suit.values()){
 				for(Rank rank : Rank.values()){
@@ -24,9 +24,7 @@ public class Deck{
 		return deck;
 	}
 
-	/*public Card burnTopCard(){
-		return deck.remove(0);
-	}*/
+	
 
 
 
