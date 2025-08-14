@@ -1,49 +1,44 @@
 public class Main{
 	public static void main(String [] args){
 		Deck deck = new Deck(1);
-		Deck twoDecks = new Deck(2);
-		Deck eightDecks = new Deck(8);
-			
-		int numOfCards1 = 0;
+		Player player = new Player();
+		int numOfCards = 0;
 		int numOfCards2 = 0;
-		int numOfCards3 = 0;
-		int numOfCards4 = 0;
-		
+
+		deck.shuffle();
 
 		for(Card card : deck.getCards()){
 			System.out.println(card);
-			numOfCards1++;
+			numOfCards++;
 		}
-		System.out.println("Total decks in 1st deck: " + numOfCards1);
-
-		
-		
 		System.out.println();
 
-		for(Card card : twoDecks.getCards()){
+		System.out.println("Number of cards remaining before dealing: " + numOfCards);
+
+		System.out.println();
+
+		
+		player.recieveCard(deck.copyCard());
+		deck.removeTopCard();
+		player.recieveCard(deck.copyCard());
+		deck.removeTopCard();
+
+		System.out.println("Player hand after dealing: " + player.returnHand());
+
+		System.out.println();
+
+		for(Card card : deck.getCards()){
 			System.out.println(card);
 			numOfCards2++;
 		}
-		System.out.println("Total decks in 2nd deck: " + numOfCards2);
+		System.out.println("Number of cards remaining after dealing: " + numOfCards2);
+		
+
+		
 
 
-		System.out.println();
 
-		eightDecks.shuffle();
-
-		for(Card card : eightDecks.getCards()){
-			System.out.println(card);
-			numOfCards3++;
-		}
-		System.out.println("Total decks in 3rd deck: " + numOfCards3);
-
-		//eightDecks.burnTopCard();
-		for(Card card : eightDecks.getCards()){
-			System.out.println(card);
-			numOfCards4++;
-		}
-		System.out.println("Total decks in 3rd deck after burning top card: " + numOfCards4);
-		System.out.println(numOfCards3 + " Vs. " + numOfCards4);
+		
 
 	}
 }
