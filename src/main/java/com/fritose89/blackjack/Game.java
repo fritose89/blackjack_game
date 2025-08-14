@@ -1,42 +1,42 @@
 import java.util.Scanner;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class Game{
 
+	static int dealerHandValue;
+	static int playerHandValue;
+	static Deck deck;
+	static Player player;
+
 	public static void main(String[] args){
 
-			SecureRandom random = new SecureRandom();
-			int minCut = 209;
-			int maxCut = 333;
-			int range = maxCut - minCut + 1;
-			
-			Scanner scanner = new Scanner(System.in);
 
-			System.out.println("Welcome to Blackjack!");
-			System.out.println("Select the number of decks you wish to play with!");
+		Scanner scanner = new Scanner(System.in);
 
-			int input = scanner.nextInt();
+		System.out.println("Welcome to Blackjack!");
+		System.out.println("Select the number of decks you wish to play with!");
 
-			//Creating deck object
-			Deck deck = new Deck(input);
+		int input = scanner.nextInt();
 
-			//Shuffling deck object
-			deck.shuffle();
+		//Creating deck object
+		deck = new Deck(input);
 
-			
+		//Creating player object, intitalizing player arraylist to store hands
+		player = new Player();
 
+		//Shuffling deck object
+		deck.shuffle();
+
+		
 
 
 
 
-
+		
 
 
 	}
-
-
-
-
-
+	
+	
+	
 }
