@@ -12,9 +12,11 @@ public class Player{
 		playerHand.add(card);
 	}
 
-	public List<Card> returnHand(){
+	public List<Card> returnPlayerHand(){
 		return playerHand;
 	}
+
+
 
 
 

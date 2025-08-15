@@ -25,23 +25,12 @@ public class Deck{
 	}
 
 
-	//method to deal cards from the top of the deck
-	public void removeTopCard(){
-		deck.remove(0);
-	}
-
-	public Card copyCard(){
+	public Card deal(){
 		Card cardCopy = deck.get(0);
+		deck.remove(0);
 		return cardCopy;
 	}
 
-	/*
-	public static void deal(Object object){
-		if(object instanceof Player){
-			deck.copyCard();
-
-		}
-	}
-	*/
+	
 
 }
