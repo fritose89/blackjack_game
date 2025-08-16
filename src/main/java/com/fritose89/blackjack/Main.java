@@ -24,15 +24,17 @@ public class Main{
 			player.recieveCard(deck.copyCard());
 			deck.removeTopCard();
 			*/
-		player.recieveCard(deck.deal());
+		player.recieveCardPlayer(deck.deal());
 		dealer.recieveCardDealer(deck.deal());
-		System.out.println("First dealer card: " + dealer.returnDealerHand());
-		player.recieveCard(deck.deal());
+		
+		player.recieveCardPlayer(deck.deal());
 		dealer.recieveCardDealer(deck.deal());
 
-		System.out.println("Player hand after dealing: " + player.returnPlayerHand());
-		System.out.println("Dealer hand after dealing (Viewd by player): " + dealer.showDealerUpCard());
-		System.out.println("Dealer hand with down card shown: " + dealer.returnDealerHand());
+		System.out.println("Player hand after dealing(User view): " + player.returnPlayerHandUser());
+		System.out.println("Player hand after dealing(Array view): " + player.returnPlayerHandArray());
+		System.out.println("Dealer hand after dealing(User view UpCard Method): " + dealer.showDealerUpCard());
+		System.out.println("Dealer hand after dealing(User view full dealer hand): " + dealer.returnDealerHandUser());
+		System.out.println("Dealer hand after dealing(Array view): " + dealer.returnDealerHandArray());
 
 		System.out.println();
 
