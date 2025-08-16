@@ -59,6 +59,7 @@ public class Game{
 		
 		System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 		System.out.println("Player Hand: " + player.returnPlayerHandUser());
+		System.out.println("Player Hand Value: " + player.playerHandValue());
 
 		
 

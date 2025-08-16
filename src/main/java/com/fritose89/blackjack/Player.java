@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Player{
 
+	static int playerHandValue;
 	List<Card> playerHand;
 
 	public Player(){
@@ -26,6 +27,21 @@ public class Player{
 		return hand;
 		
 	}
+
+
+	public int playerHandValue(){
+		for(Card card : playerHand){
+			Rank rank = card.getRank();
+			playerHandValue += rank.getValue();
+		}
+		return playerHandValue;
+	}
+
+	public void resetplayerHandValue(){
+		playerHandValue = 0;
+	}
+
+
 
 
 
