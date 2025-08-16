@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.security.SecureRandom;
 
 public class Game{
 
@@ -18,6 +19,7 @@ public class Game{
 		System.out.println("Select the number of decks you wish to play with!");
 
 		int input = scanner.nextInt();
+		scanner.nextLine();
 
 		//Creating deck object
 		deck = new Deck(input);
@@ -31,18 +33,34 @@ public class Game{
 		//Shuffling deck object
 		deck.shuffle();
 
-		player.recieveCard(deck.deal());
+		player.recieveCardPlayer(deck.deal());
 		dealer.recieveCardDealer(deck.deal());
-		player.recieveCard(deck.deal());
+		player.recieveCardPlayer(deck.deal());
 		dealer.recieveCardDealer(deck.deal());
 
 
-		System.out.println("Player Hand: " + player.returnPlayerHand());
+		System.out.println("Player Hand: " + player.returnPlayerHandUser());
 		System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
 
-		System.out.println();
+		
 
 		System.out.println("Player can either Hit or Stand!");
+		String response = scanner.nextLine();
+
+		
+		if(response.equals("Hit")){
+			player.recieveCardPlayer(deck.deal());
+		}
+		
+		else{
+			System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+			System.out.println("Player Hand: " + player.returnPlayerHandUser());
+		}
+		
+		System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+		System.out.println("Player Hand: " + player.returnPlayerHandUser());
+
+		
 
 
 
