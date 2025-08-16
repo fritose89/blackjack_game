@@ -12,14 +12,27 @@ public class Dealer{
 		dealerHand.add(card);
 	}
 
-	public List<Card> returnDealerHand(){
+	public List<Card> returnDealerHandArray(){
 		return dealerHand;
 	}
 
-	public Card showDealerUpCard(){
+	public String showDealerUpCard(){
 		Card tempHand = dealerHand.get(0);
-		return tempHand;
+		String dealerUpHand = tempHand.toString();
+		return dealerUpHand;
 	}
+
+	public String returnDealerHandUser(){
+		List<String> tempHand = new ArrayList<>();
+		for(Card card : dealerHand){
+			tempHand.add(card.toString());
+		}
+		String hand = tempHand.toString();
+		hand = hand.replace("[", "").replace("]", "");
+		return hand;
+		
+	}
+
 
 	
 }
