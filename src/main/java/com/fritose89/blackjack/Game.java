@@ -4,8 +4,7 @@ import java.security.SecureRandom;
 
 public class Game{
 
-	static int dealerHandValue;
-	static int playerHandValue;
+	
 	static Deck deck;
 	static Player player;
 	static Dealer dealer;
@@ -60,6 +59,7 @@ public class Game{
 		System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 		System.out.println("Player Hand: " + player.returnPlayerHandUser());
 		System.out.println("Player Hand Value: " + player.playerHandValue());
+		System.out.println("Dealer Hand Value: " + dealer.dealerHandValue());
 
 		
 

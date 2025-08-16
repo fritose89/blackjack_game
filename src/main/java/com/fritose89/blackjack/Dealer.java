@@ -3,6 +3,7 @@ import java.util.*;
 public class Dealer{
 
 	List<Card> dealerHand;
+	static int dealerHandValue;
 
 	public Dealer(){
 		dealerHand = new ArrayList<>();
@@ -31,6 +32,18 @@ public class Dealer{
 		hand = hand.replace("[", "").replace("]", "");
 		return hand;
 		
+	}
+
+	public int dealerHandValue(){
+		for(Card card : dealerHand){
+			Rank rank = card.getRank();
+			dealerHandValue += rank.getValue();
+		}
+		return dealerHandValue;
+	}
+
+	public void resetDealerHandValue(){
+		dealerHandValue = 0;
 	}
 
 
