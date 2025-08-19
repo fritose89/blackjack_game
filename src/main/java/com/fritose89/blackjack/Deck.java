@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 public class Deck{
 	private final List<Card> deck = new ArrayList<>();
 	SecureRandom random = new SecureRandom();
-	//static Card cutCard = new Card("Cut", 0);
+	static Card cutCard = new Card(Rank.ZERO, Suit.CUT);
 
 	//Deck constructor
 	public Deck(int numDecks){
@@ -12,11 +12,20 @@ public class Deck{
 			for(Suit suit : Suit.values()){
 				if(suit != Suit.CUT){
 					for(Rank rank : Rank.values()){
-						deck.add(new Card(rank, suit));
+						if(rank != Rank.ZERO){
+							deck.add(new Card(rank, suit));
+						}	
 					}
 				}
 			}
 		}
+
+		int cards = numDecks * 52;
+		int minPercent  = (int)(cards * 0.6);
+		int maxPercent = (int)(cards * 0.8);
+		int rangeOfCut = (maxPercent - minPercent) + 1;
+		int cutCardIndex = random.nextInt(rangeOfCut) + maxPercent;
+		deck.add(cutCardIndex, cutCard);
 
 	}
 
