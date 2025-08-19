@@ -29,8 +29,18 @@ public class Game{
 		//Creating player object, intitalizing player arraylist to store hands
 		player = new Player();
 
-		//Shuffling deck object
-		deck.shuffle();
+		for(Card card : deck.getCards()){
+			System.out.println(card);
+			
+		}
+		System.out.println();
+
+		
+
+		for(Card card : deck.getCards()){
+			System.out.println(card);
+			
+		}
 
 		player.recieveCardPlayer(deck.deal());
 		dealer.recieveCardDealer(deck.deal());

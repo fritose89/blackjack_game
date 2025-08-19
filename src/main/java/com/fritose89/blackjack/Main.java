@@ -1,12 +1,12 @@
 public class Main{
 	public static void main(String [] args){
-		Deck deck = new Deck(1);
+		Deck deck = new Deck(2);
 		Player player = new Player();
 		Dealer dealer = new Dealer();
 		int numOfCards = 0;
 		int numOfCards2 = 0;
 
-		deck.shuffle();
+		//deck.shuffle();
 
 		for(Card card : deck.getCards()){
 			System.out.println(card);
@@ -43,6 +43,14 @@ public class Main{
 			numOfCards2++;
 		}
 		System.out.println("Number of cards remaining after dealing: " + numOfCards2);
+
+		int indexOfCut = 0;
+		for(Card card : deck.getCards()){
+				if(card.getSuit() == Suit.CUT){
+					System.out.println(indexOfCut);
+				}
+				indexOfCut++;
+		}
 		
 
 		

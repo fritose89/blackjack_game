@@ -19,20 +19,18 @@ public class Deck{
 				}
 			}
 		}
-
+		Collections.shuffle(deck);
 		int cards = numDecks * 52;
 		int minPercent  = (int)(cards * 0.6);
 		int maxPercent = (int)(cards * 0.8);
 		int rangeOfCut = (maxPercent - minPercent) + 1;
-		int cutCardIndex = random.nextInt(rangeOfCut) + maxPercent;
+		int cutCardIndex = random.nextInt(rangeOfCut) + minPercent;
 		deck.add(cutCardIndex, cutCard);
 
+
 	}
 
-	//Shuffle method
-	public void shuffle(){
-		Collections.shuffle(deck);
-	}
+	
 
 	//Getter method to return cards in the deck
 	public List<Card> getCards(){
@@ -45,6 +43,11 @@ public class Deck{
 		deck.remove(0);
 		return cardCopy;
 	}
+
+	
+	
+
+
 
 
 
