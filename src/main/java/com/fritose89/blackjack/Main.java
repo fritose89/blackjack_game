@@ -1,6 +1,6 @@
 public class Main{
 	public static void main(String [] args){
-		Deck deck = new Deck(2);
+		Deck deck = new Deck(1);
 		Player player = new Player();
 		Dealer dealer = new Dealer();
 		int numOfCards = 0;
@@ -32,6 +32,7 @@ public class Main{
 
 		System.out.println("Player hand after dealing(User view): " + player.returnPlayerHandUser());
 		System.out.println("Player hand after dealing(Array view): " + player.returnPlayerHandArray());
+		System.out.println("Player hand contain Ace: " + player.playerHandContainsAce());
 		System.out.println("Dealer hand after dealing(User view UpCard Method): " + dealer.showDealerUpCard());
 		System.out.println("Dealer hand after dealing(User view full dealer hand): " + dealer.returnDealerHandUser());
 		System.out.println("Dealer hand after dealing(Array view): " + dealer.returnDealerHandArray());

@@ -42,6 +42,17 @@ public class Player{
 	}
 
 
+	public boolean playerHandContainsAce(){
+		boolean containsAce = false;
+		for(Card card : playerHand){
+			if(card.getRank() == Rank.ACE){
+				containsAce = true;
+			}
+		}
+		return containsAce;
+	}
+
+
 
 
 
