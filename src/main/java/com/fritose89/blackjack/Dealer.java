@@ -3,7 +3,7 @@ import java.util.*;
 public class Dealer{
 
 	List<Card> dealerHand;
-	static int dealerHandValue;
+	
 
 	public Dealer(){
 		dealerHand = new ArrayList<>();
@@ -35,17 +35,25 @@ public class Dealer{
 	}
 
 	public int dealerHandValue(){
+		int dealerHandValue = 0;
+		int aceCount = 0;
 		for(Card card : dealerHand){
 			Rank rank = card.getRank();
 			dealerHandValue += rank.getValue();
+			if(rank == Rank.ACE){
+				aceCount++;
+			}
 		}
+
+		if(dealerHandValue > 21 && aceCount > 0){
+			dealerHandValue -= 10;
+			aceCount--;
+		}
+
 		return dealerHandValue;
 	}
 
-	public void resetDealerHandValue(){
-		dealerHandValue = 0;
-	}
-
+	
 
 	
 }
