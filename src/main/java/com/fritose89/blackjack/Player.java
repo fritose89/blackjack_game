@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Player{
 
-	static int playerHandValue;
+	
 	List<Card> playerHand;
 
 	public Player(){
@@ -30,27 +30,32 @@ public class Player{
 
 
 	public int playerHandValue(){
+		int playerHandValue = 0;
+		int aceCount = 0;
 		for(Card card : playerHand){
 			Rank rank = card.getRank();
 			playerHandValue += rank.getValue();
+			if(rank == Rank.ACE){
+				aceCount++;
+			}
 		}
+
+		if(playerHandValue > 21 && aceCount > 0){
+			playerHandValue -= 10;
+			aceCount--;
+		}
+
+		
+		
 		return playerHandValue;
 	}
 
-	public void resetplayerHandValue(){
-		playerHandValue = 0;
-	}
+	
 
 
-	public boolean playerHandContainsAce(){
-		boolean containsAce = false;
-		for(Card card : playerHand){
-			if(card.getRank() == Rank.ACE){
-				containsAce = true;
-			}
-		}
-		return containsAce;
-	}
+
+		
+	
 
 
 
