@@ -24,27 +24,38 @@ public class Main{
 			player.recieveCard(deck.copyCard());
 			deck.removeTopCard();
 			*/
-		player.recieveCardPlayer(deck.deal());
+
 		dealer.recieveCardDealer(deck.deal());
+		dealer.recieveCardDealer(deck.deal());
+		player.recieveCardPlayer(deck.deal());
+		//dealer.recieveCardDealer(deck.deal());
 		
 		player.recieveCardPlayer(deck.deal());
-		dealer.recieveCardDealer(deck.deal());
+	
 
 		System.out.println("Player hand after dealing(User view): " + player.returnPlayerHandUser());
 		System.out.println("Player hand after dealing(Array view): " + player.returnPlayerHandArray());
-		System.out.println("Player hand contain Ace: " + player.playerHandContainsAce());
+		//System.out.println("Player hand contain Ace: " + player.playerHandContainsAce());
 		System.out.println("Dealer hand after dealing(User view UpCard Method): " + dealer.showDealerUpCard());
 		System.out.println("Dealer hand after dealing(User view full dealer hand): " + dealer.returnDealerHandUser());
 		System.out.println("Dealer hand after dealing(Array view): " + dealer.returnDealerHandArray());
 
 		System.out.println();
 
+		System.out.println("Does player have Blackjack?: " + player.playerHasBlackjack());
+
+		System.out.println("Does dealer have Blackjack?: " + dealer.dealerHasBlackjack());
+
+		System.out.println();
+		/*
 		for(Card card : deck.getCards()){
 			System.out.println(card);
 			numOfCards2++;
 		}
 		System.out.println("Number of cards remaining after dealing: " + numOfCards2);
+		*/
 
+		/*
 		int indexOfCut = 0;
 		for(Card card : deck.getCards()){
 				if(card.getSuit() == Suit.CUT){
@@ -52,7 +63,7 @@ public class Main{
 				}
 				indexOfCut++;
 		}
-		
+		*/
 
 		
 

@@ -50,6 +50,25 @@ public class Player{
 		return playerHandValue;
 	}
 
+	public boolean playerHasBlackjack(){
+		int playerBlackjack = 0;
+		boolean hasBlackjack = false;
+		for(Card card : playerHand){
+			Rank rank = card.getRank();
+			if(rank == Rank.ACE || rank == Rank.KING || rank == Rank.QUEEN || rank == Rank.JACK || rank == Rank.TEN){
+				playerBlackjack++;
+			}
+		}
+		if(playerBlackjack == 2){
+			hasBlackjack = true;
+			return hasBlackjack;
+		}
+
+		else{
+			return hasBlackjack;
+		}
+	}
+
 	
 
 

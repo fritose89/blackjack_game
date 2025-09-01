@@ -53,6 +53,25 @@ public class Dealer{
 		return dealerHandValue;
 	}
 
+	public boolean dealerHasBlackjack(){
+		int dealerBlackjack = 0;
+		boolean hasBlackjack = false;
+		for(Card card : dealerHand){
+			Rank rank = card.getRank();
+			if(rank == Rank.ACE || rank == Rank.KING || rank == Rank.QUEEN || rank == Rank.JACK || rank == Rank.TEN){
+				dealerBlackjack++;
+			}
+		}
+		if(dealerBlackjack == 2){
+			hasBlackjack = true;
+			return hasBlackjack;
+		}
+
+		else{
+			return hasBlackjack;
+		}
+	}
+
 	
 
 	
