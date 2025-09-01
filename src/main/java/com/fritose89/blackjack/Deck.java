@@ -19,7 +19,7 @@ public class Deck{
 				}
 			}
 		}
-		//Collections.shuffle(deck);
+		Collections.shuffle(deck);
 		int cards = numDecks * 52;
 		int minPercent  = (int)(cards * 0.6);
 		int maxPercent = (int)(cards * 0.8);
