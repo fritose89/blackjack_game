@@ -29,48 +29,78 @@ public class Game{
 		//Creating player object, intitalizing player arraylist to store hands
 		player = new Player();
 
-		for(Card card : deck.getCards()){
-			System.out.println(card);
-			
-		}
+	
 		System.out.println();
 
 		
 
-		for(Card card : deck.getCards()){
-			System.out.println(card);
-			
-		}
-
-		player.recieveCardPlayer(deck.deal());
-		dealer.recieveCardDealer(deck.deal());
-		player.recieveCardPlayer(deck.deal());
-		dealer.recieveCardDealer(deck.deal());
-
-
-		System.out.println("Player Hand: " + player.returnPlayerHandUser());
-		System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
-
-		
-
-		System.out.println("Player can either Hit or Stand!");
-		String response = scanner.nextLine();
-
-		
-		if(response.equals("Hit")){
 			player.recieveCardPlayer(deck.deal());
-		}
-		
-		else{
-			System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
-			System.out.println("Player Hand: " + player.returnPlayerHandUser());
-		}
-		
-		System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
-		System.out.println("Player Hand: " + player.returnPlayerHandUser());
-		System.out.println("Player Hand Value: " + player.playerHandValue());
-		System.out.println("Dealer Hand Value: " + dealer.dealerHandValue());
+			player.recieveCardPlayer(deck.deal());
+			dealer.recieveCardDealer(deck.deal());
+			dealer.recieveCardDealer(deck.deal());
 
+			System.out.println("Player Hand: " + player.returnPlayerHandUser());
+			System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
+			System.out.println();
+
+			if(player.playerHasBlackjack() == true){
+				if(dealer.dealerHasBlackjack() == true){
+					System.out.println("Both Player and Dealer have Blackjack this is a Push!");
+				}
+				else{
+					System.out.println("Player wins!");
+				}
+			}
+			else{
+				if(dealer.dealerHasBlackjack() == true){
+					System.out.println("Dealer wins!");
+				}
+			}
+
+
+
+			while(true){
+				System.out.println("Player Hand: " + player.returnPlayerHandUser());
+				System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
+				if(player.playerHandValue() > 21){
+					break;
+				}
+				else{
+					System.out.println("Player may Hit or Stand");
+					String response = scanner.nextLine();
+					if(response.equals("Hit")){
+						player.recieveCardPlayer(deck.deal());
+					}
+					else{
+						break;
+					}
+				}
+			}
+
+			System.out.println("Player Hand: " + player.returnPlayerHandUser());
+			System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+
+			while(true){
+				if(dealer.dealerHandValue() >= 17){
+					break;
+				}
+				else{
+					dealer.recieveCardDealer(deck.deal());
+					System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				}
+
+			}
+
+
+			//if(dealer.dealerHandValue())
+
+
+
+
+		
+
+		
+	
 		
 
 

@@ -44,6 +44,22 @@ public class Deck{
 		return cardCopy;
 	}
 
+	public boolean peekForCut(){
+		Card cardCopy = deck.get(0);
+		Rank rank = cardCopy.getRank();
+		if(rank == Rank.ZERO){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	public Card getTop(){
+		Card cardCopy = deck.get(0);
+		return cardCopy;	
+	}
+
 	
 	
 

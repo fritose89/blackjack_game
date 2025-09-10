@@ -47,6 +47,11 @@ public class Main{
 		System.out.println("Does dealer have Blackjack?: " + dealer.dealerHasBlackjack());
 
 		System.out.println();
+
+
+		System.out.println("What returns from deck.peekForCut() " + deck.peekForCut());
+		System.out.println("Confirming peekForCut() method is correct: " + deck.getTop());
+
 		/*
 		for(Card card : deck.getCards()){
 			System.out.println(card);
