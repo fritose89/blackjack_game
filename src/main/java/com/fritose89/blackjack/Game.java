@@ -118,6 +118,12 @@ public class Game{
 				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 				System.out.println("Dealer Busts Out, Player Wins!");
 			}
+
+			else if(dHandValue == pHandValue){
+				System.out.println("Player Hand: " + player.returnPlayerHandUser());
+				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				System.out.println("Player and Dealer Hand are Equal, Push!");
+			}
 			
 			else if((dHandValue <= 21) && (pHandValue <= 21)){
 				if(dHandValue > pHandValue){
@@ -131,26 +137,6 @@ public class Game{
 					System.out.println("Player Wins!");
 				}
 			}
-
-
-
-
-		
-
-		
-	
-		
-
-
-
-	
-
-		
-
-
-
-
-		
 
 
 	}
