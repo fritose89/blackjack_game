@@ -17,6 +17,10 @@ public class Dealer{
 		return dealerHand;
 	}
 
+	public void resetDealerHand(){
+		dealerHand.clear();
+	}
+
 	public String showDealerUpCard(){
 		Card tempHand = dealerHand.get(0);
 		String dealerUpHand = tempHand.toString();
@@ -69,6 +73,23 @@ public class Dealer{
 
 		else{
 			return hasBlackjack;
+		}
+	}
+
+	public boolean dHasBJ(){
+		ArrayList<Rank> temp = new ArrayList<>();
+		for(Card card : dealerHand){
+			Rank rank = card.getRank();
+			if(rank == Rank.ACE || rank == Rank.KING || rank == Rank.QUEEN || rank == Rank.JACK || rank == Rank.TEN){
+				temp.add(rank);
+			}
+
+		}
+		if((temp.contains(Rank.ACE) && (temp.contains(Rank.KING)) || (temp.contains(Rank.ACE) && temp.contains(Rank.QUEEN)) || (temp.contains(Rank.ACE) && temp.contains(Rank.JACK)) || (temp.contains(Rank.ACE) && temp.contains(Rank.TEN)))){
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 
