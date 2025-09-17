@@ -108,7 +108,7 @@ public class Game{
 
 			}
 
-			else if(pHandValue < 21 && dHandValue == 21){
+			else if(pHandValue != 21 && dHandValue == 21){
 				System.out.println("Player Hand: " + player.returnPlayerHandUser());
 				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 				System.out.println("Dealer has Blackjack, Player Loses.");
