@@ -94,6 +94,11 @@ public class Dealer{
 	}
 
 	
+	public int size(){
+		return dealerHand.size();
+	}
+
+	
 
 	
 }

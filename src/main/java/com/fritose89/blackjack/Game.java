@@ -2,12 +2,20 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.security.SecureRandom;
 
+class MyException extends Exception{
+	public MyException(String m){
+		super(m);
+	}
+}
+
 public class Game{
 
 	
 	static Deck deck;
 	static Player player;
 	static Dealer dealer;
+	static ArrayList holdsCut;
+
 
 	public static void main(String[] args){
 
@@ -38,12 +46,14 @@ public class Game{
 		
 		
 			
-		while(true){	
+		while(true){
+
+
 		
-			player.recieveCardPlayer(deck.deal());
-			player.recieveCardPlayer(deck.deal());
-			dealer.recieveCardDealer(deck.deal());
-			dealer.recieveCardDealer(deck.deal());
+				player.recieveCardPlayer(deck.deal());
+				player.recieveCardPlayer(deck.deal());
+				dealer.recieveCardDealer(deck.deal());
+				dealer.recieveCardDealer(deck.deal());
 			
 			
 
@@ -57,26 +67,41 @@ public class Game{
 					break;
 				}
 				else{
-					System.out.println("Player may Hit or Stand");
-					System.out.println();
-					String response = scanner.nextLine();
-					if(response.equals("Hit")){
-						player.recieveCardPlayer(deck.deal());
 					
-					}
-					else{
-						break;
-					}
+					
+						System.out.println("Player may Hit or Stand");
+						System.out.println();
+						String response = scanner.nextLine();
+						
+						try{
+							if(!response.equals("Hit") && !response.equals("Stand")){
+								throw new MyException("Please enter either Hit or Stand");
+							
+							}
+							
+						}
+						catch(MyException e){
+							System.out.println(e.getMessage());
+							System.out.println();
+						}
+						if(response.equals("Hit")){
+							player.recieveCardPlayer(deck.deal());
+						}
+						else if(response.equals("Stand")){
+							break;
+						}
+
 				}
+					
 			}
 
 			System.out.println("Player Hand: " + player.returnPlayerHandUser());
 			System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 			System.out.println();
 			
-
+			int sizeOfPlayerHand = player.size();
 			while(true){
-				if(player.playerHandValue() == 21 && dealer.dealerHandValue() <= 21){
+				if(player.playerHandValue() == 21 && dealer.dealerHandValue() <= 21 && sizeOfPlayerHand == 2){
 					break;
 				}
 				else if(dealer.dealerHandValue() >= 17){
@@ -93,22 +118,24 @@ public class Game{
 
 			int pHandValue = player.playerHandValue();
 			int dHandValue = dealer.dealerHandValue();
+			//int sizeOfPlayerHand = player.size();
+			int sizeOfDealerHand = dealer.size();
 
-			if(pHandValue == 21 && dHandValue < 21){
+			if(pHandValue == 21 && dHandValue < 21 && sizeOfPlayerHand == 2){
 				System.out.println("Player Hand: " + player.returnPlayerHandUser());
 				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 				System.out.println("Player has Blackjack, Dealer Loses.");
 
 			}
 
-			else if(pHandValue == 21 && dHandValue == 21){
+			else if(pHandValue == 21 && dHandValue == 21 && sizeOfPlayerHand == 2 && sizeOfDealerHand == 2){
 				System.out.println("Player Hand: " + player.returnPlayerHandUser());
 				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 				System.out.println("Both Player and Dealer have Blackjack this is a Push!");
 
 			}
 
-			else if(pHandValue != 21 && dHandValue == 21){
+			else if(pHandValue != 21 && dHandValue == 21 && sizeOfDealerHand == 2){
 				System.out.println("Player Hand: " + player.returnPlayerHandUser());
 				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 				System.out.println("Dealer has Blackjack, Player Loses.");
@@ -170,19 +197,12 @@ public class Game{
 				break;
 			}
 			else{
+
 				player.resetPlayerHand();
 				dealer.resetDealerHand();
 				continue;
 			}
-
-		
 		}
-		
-
-
-	}
-
-	
-	
+	}	
 	
 }

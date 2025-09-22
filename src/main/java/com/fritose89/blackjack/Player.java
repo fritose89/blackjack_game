@@ -88,6 +88,10 @@ public class Player{
 		else{
 			return false;
 		}
+	}
+
+	public int size(){
+		return playerHand.size();
 	}	
 	
 
