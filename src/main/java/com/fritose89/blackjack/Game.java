@@ -49,7 +49,7 @@ public class Game{
 		while(true){
 
 
-		
+			
 				player.recieveCardPlayer(deck.deal());
 				player.recieveCardPlayer(deck.deal());
 				dealer.recieveCardDealer(deck.deal());
@@ -118,7 +118,6 @@ public class Game{
 
 			int pHandValue = player.playerHandValue();
 			int dHandValue = dealer.dealerHandValue();
-			//int sizeOfPlayerHand = player.size();
 			int sizeOfDealerHand = dealer.size();
 
 			if(pHandValue == 21 && dHandValue < 21 && sizeOfPlayerHand == 2){
@@ -142,50 +141,32 @@ public class Game{
 			}
 
 			else if((dHandValue > 21) && (pHandValue > 21)){
-				System.out.println("Player Hand Value: " + player.playerHandValue());
-				System.out.println("Dealer Hand Value: " + dealer.dealerHandValue());
-				System.out.println("Player Hand: " + player.returnPlayerHandUser());
-				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				System.out.println(Game.handCompareOutput());
 				System.out.println("Dealer and Player have busted out.");
 			}
 
 			else if(pHandValue > 21){
-				System.out.println("Player Hand Value: " + player.playerHandValue());
-				System.out.println("Dealer Hand Value: " + dealer.dealerHandValue());
-				System.out.println("Player Hand: " + player.returnPlayerHandUser());
-				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				System.out.println(Game.handCompareOutput());
 				System.out.println("Player has busted out, Dealer Wins!");
 			}
 
 			else if((dHandValue > 21) && (pHandValue <= 21)){
-				System.out.println("Player Hand Value: " + player.playerHandValue());
-				System.out.println("Dealer Hand Value: " + dealer.dealerHandValue());
-				System.out.println("Player Hand: " + player.returnPlayerHandUser());
-				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				System.out.println(Game.handCompareOutput());
 				System.out.println("Dealer Busts Out, Player Wins!");
 			}
 
 			else if(dHandValue == pHandValue){
-				System.out.println("Player Hand Value: " + player.playerHandValue());
-				System.out.println("Dealer Hand Value: " + dealer.dealerHandValue());
-				System.out.println("Player Hand: " + player.returnPlayerHandUser());
-				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				System.out.println(Game.handCompareOutput());
 				System.out.println("Player and Dealer Hand are Equal, Push!");
 			}
 			
 			else if((dHandValue <= 21) && (pHandValue <= 21)){
 				if(dHandValue > pHandValue){
-					System.out.println("Player Hand Value: " + player.playerHandValue());
-					System.out.println("Dealer Hand Value: " + dealer.dealerHandValue());
-					System.out.println("Player Hand: " + player.returnPlayerHandUser());
-					System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+					System.out.println(Game.handCompareOutput());
 					System.out.println("Dealer Wins!");
 				}
 				else{
-					System.out.println("Player Hand Value: " + player.playerHandValue());
-					System.out.println("Dealer Hand Value: " + dealer.dealerHandValue());
-					System.out.println("Player Hand: " + player.returnPlayerHandUser());
-					System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+					System.out.println(Game.handCompareOutput());
 					System.out.println("Player Wins!");
 				}
 			}
@@ -197,12 +178,29 @@ public class Game{
 				break;
 			}
 			else{
+				
 
 				player.resetPlayerHand();
 				dealer.resetDealerHand();
 				continue;
 			}
 		}
-	}	
+	}
+
+
+	public static String handCompareOutput(){
+		int pHandValue = player.playerHandValue();
+		int dHandValue = dealer.dealerHandValue();
+		String pHand = player.returnPlayerHandUser();
+		String dHand = dealer.returnDealerHandUser();
+		StringBuilder sb = new StringBuilder();
+		sb.append("Player Hand Value: " + pHandValue + "\n");
+		sb.append("Dealer Hand Value: " + dHandValue + "\n");
+		sb.append("Player Hand: " + pHand + "\n");
+		sb.append("Dealer Hand: " + dHand + "\n");
+		String output = sb.toString();
+		return output;
+
+	}
 	
 }
