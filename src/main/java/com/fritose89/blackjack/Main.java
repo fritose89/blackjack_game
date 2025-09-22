@@ -31,7 +31,7 @@ public class Main{
 		//dealer.recieveCardDealer(deck.deal());
 		
 		//player.recieveCardPlayer(deck.deal());
-		System.out.println("Dealer has BJ: " + dealer.dHasBJ());
+		//System.out.println("Dealer has BJ: " + dealer.dHasBJ());
 		
 
 		

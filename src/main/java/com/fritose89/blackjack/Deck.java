@@ -39,8 +39,6 @@ public class Deck{
 
 
 	public Card deal(){
-		//Card cardCopy = deck.get(0);
-		//deck.remove(0);
 		return deck.remove(0);
 	}
 

@@ -57,41 +57,7 @@ public class Dealer{
 		return dealerHandValue;
 	}
 
-	public boolean dealerHasBlackjack(){
-		int dealerBlackjack = 0;
-		boolean hasBlackjack = false;
-		for(Card card : dealerHand){
-			Rank rank = card.getRank();
-			if(rank == Rank.ACE || rank == Rank.KING || rank == Rank.QUEEN || rank == Rank.JACK || rank == Rank.TEN){
-				dealerBlackjack++;
-			}
-		}
-		if(dealerBlackjack == 2){
-			hasBlackjack = true;
-			return hasBlackjack;
-		}
 
-		else{
-			return hasBlackjack;
-		}
-	}
-
-	public boolean dHasBJ(){
-		ArrayList<Rank> temp = new ArrayList<>();
-		for(Card card : dealerHand){
-			Rank rank = card.getRank();
-			if(rank == Rank.ACE || rank == Rank.KING || rank == Rank.QUEEN || rank == Rank.JACK || rank == Rank.TEN){
-				temp.add(rank);
-			}
-
-		}
-		if((temp.contains(Rank.ACE) && (temp.contains(Rank.KING)) || (temp.contains(Rank.ACE) && temp.contains(Rank.QUEEN)) || (temp.contains(Rank.ACE) && temp.contains(Rank.JACK)) || (temp.contains(Rank.ACE) && temp.contains(Rank.TEN)))){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
 
 	
 	public int size(){

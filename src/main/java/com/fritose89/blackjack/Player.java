@@ -54,41 +54,7 @@ public class Player{
 		return playerHandValue;
 	}
 
-	public boolean playerHasBlackjack(){
-		int playerBlackjack = 0;
-		boolean hasBlackjack = false;
-		for(Card card : playerHand){
-			Rank rank = card.getRank();
-			if(rank == Rank.ACE || rank == Rank.KING || rank == Rank.QUEEN || rank == Rank.JACK || rank == Rank.TEN){
-				playerBlackjack++;
-			}
-		}
-		if(playerBlackjack == 2){
-			hasBlackjack = true;
-			return hasBlackjack;
-		}
-
-		else{
-			return hasBlackjack;
-		}
-	}
-
-	public boolean pHasBJ(){
-		ArrayList<Rank> temp = new ArrayList<>();
-		for(Card card : playerHand){
-			Rank rank = card.getRank();
-			if(rank == Rank.ACE || rank == Rank.KING || rank == Rank.QUEEN || rank == Rank.JACK || rank == Rank.TEN){
-				temp.add(rank);
-			}
-
-		}
-		if((temp.contains(Rank.ACE) && (temp.contains(Rank.KING)) || (temp.contains(Rank.ACE) && temp.contains(Rank.QUEEN)) || (temp.contains(Rank.ACE) && temp.contains(Rank.JACK)) || (temp.contains(Rank.ACE) && temp.contains(Rank.TEN)))){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
+	
 
 	public int size(){
 		return playerHand.size();
