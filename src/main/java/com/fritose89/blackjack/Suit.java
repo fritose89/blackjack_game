@@ -1,5 +1,5 @@
 public enum Suit{
-	HEARTS("Hearts"), DIAMONDS("Diamonds"), CLUBS("Clubs"), SPADES("Spades"), CUT("Cut");
+	HEARTS("Hearts"), DIAMONDS("Diamonds"), CLUBS("Clubs"), SPADES("Spades");
 
 	private final String symbol;
 

@@ -2,6 +2,7 @@ public class Card{
 
 	private final Rank rank;
 	private final Suit suit;
+	public static final Card cutCard = new Card(null, null);
 
 	public Card(Rank rank, Suit suit){
 		this.rank = rank;
