@@ -62,15 +62,15 @@ public class Game{
 			while(true){
 				System.out.println("Player Hand: " + player.returnPlayerHandUser());
 				System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
+				System.out.println();
 				if(player.playerHandValue() >= 21){
 					
 					break;
 				}
 				else{
 					
-					
-						System.out.println("Player may Hit or Stand");
 						System.out.println();
+						System.out.println("Player may Hit or Stand");
 						String response = scanner.nextLine();
 						
 						try{
@@ -86,8 +86,10 @@ public class Game{
 						}
 						if(response.equals("Hit")){
 							player.recieveCardPlayer(deck.deal());
+							System.out.println();
 						}
 						else if(response.equals("Stand")){
+							System.out.println();
 							break;
 						}
 
@@ -179,7 +181,7 @@ public class Game{
 			}
 			else{
 				
-
+				System.out.println();
 				player.resetPlayerHand();
 				dealer.resetDealerHand();
 				continue;
