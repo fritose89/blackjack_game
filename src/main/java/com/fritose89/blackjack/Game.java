@@ -55,13 +55,14 @@ public class Game{
 				dealer.recieveCardDealer(deck.deal());
 				dealer.recieveCardDealer(deck.deal());
 			
-			
+				//System.out.println("Player Hand: " + player.returnPlayerHandUser());
+				  System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
 
 		
 
 			while(true){
 				System.out.println("Player Hand: " + player.returnPlayerHandUser());
-				System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
+				//System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
 				System.out.println();
 				if(player.playerHandValue() >= 21){
 					
@@ -69,7 +70,7 @@ public class Game{
 				}
 				else{
 					
-						System.out.println();
+						
 						System.out.println("Player may Hit or Stand");
 						String response = scanner.nextLine();
 						
@@ -121,32 +122,77 @@ public class Game{
 			int pHandValue = player.playerHandValue();
 			int dHandValue = dealer.dealerHandValue();
 			int sizeOfDealerHand = dealer.size();
+			/*
 
 			if(pHandValue == 21 && dHandValue < 21 && sizeOfPlayerHand == 2){
-				System.out.println("Player Hand: " + player.returnPlayerHandUser());
-				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				System.out.println(Game.handCompareOutput());
 				System.out.println("Player has Blackjack, Dealer Loses.");
 
 			}
+			*/
+			System.out.println(Game.handCompareOutput());
 
+			if((pHandValue == 21 || dHandValue == 21) && (sizeOfPlayerHand == 2 || sizeOfDealerHand == 2)){
+				if((pHandValue == 21 && dHandValue == 21) && (sizeOfPlayerHand == 2 && sizeOfDealerHand == 2)){
+					System.out.println("Both Player and Dealer have Blackjack this is a Push!");
+				}
+				else if(pHandValue == 21 && dHandValue < 21 && sizeOfPlayerHand == 2){
+					System.out.println("Player has Blackjack, Dealer Loses.");
+				}
+				else if(pHandValue != 21 && dHandValue == 21 && sizeOfDealerHand == 2){
+					System.out.println("Dealer has Blackjack, Player Loses.");
+				}
+
+			}
+			else{
+				if(dHandValue > 21 || pHandValue > 21){
+					if(dHandValue > 21 && pHandValue > 21){
+						System.out.println("Dealer and Player have busted out.");
+					}
+					else if(pHandValue > 21 && dHandValue < 21){
+						System.out.println("Player has busted out, Dealer Wins!");
+					}
+					else if(dHandValue > 21 && pHandValue < 21){
+						System.out.println("Dealer Busts Out, Player Wins!");
+					}
+				}
+				else{
+					if(dHandValue == pHandValue){
+						System.out.println("Player and Dealer Hand are Equal, Push!");
+					}
+					else{
+						if(dHandValue > pHandValue){
+							System.out.println("Dealer Wins!");
+						}
+						else{
+							System.out.println("Player Wins!");
+						}
+					}
+				}
+
+			}
+
+
+			/*
 			else if(pHandValue == 21 && dHandValue == 21 && sizeOfPlayerHand == 2 && sizeOfDealerHand == 2){
-				System.out.println("Player Hand: " + player.returnPlayerHandUser());
-				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				System.out.println(Game.handCompareOutput());
 				System.out.println("Both Player and Dealer have Blackjack this is a Push!");
 
 			}
-
+			*/
+			/*
 			else if(pHandValue != 21 && dHandValue == 21 && sizeOfDealerHand == 2){
-				System.out.println("Player Hand: " + player.returnPlayerHandUser());
-				System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
+				System.out.println(Game.handCompareOutput());
 				System.out.println("Dealer has Blackjack, Player Loses.");
 			}
-
+			*/
+			/*
 			else if((dHandValue > 21) && (pHandValue > 21)){
 				System.out.println(Game.handCompareOutput());
 				System.out.println("Dealer and Player have busted out.");
 			}
-
+			*/
+			/*
 			else if(pHandValue > 21){
 				System.out.println(Game.handCompareOutput());
 				System.out.println("Player has busted out, Dealer Wins!");
@@ -156,7 +202,8 @@ public class Game{
 				System.out.println(Game.handCompareOutput());
 				System.out.println("Dealer Busts Out, Player Wins!");
 			}
-
+			*/
+			/*
 			else if(dHandValue == pHandValue){
 				System.out.println(Game.handCompareOutput());
 				System.out.println("Player and Dealer Hand are Equal, Push!");
@@ -172,8 +219,9 @@ public class Game{
 					System.out.println("Player Wins!");
 				}
 			}
+			*/
 
-
+			System.out.println();
 			System.out.println("Play again?: Yes or No");
 			String response = scanner.nextLine();
 			if(response.equals("No")){
@@ -199,7 +247,7 @@ public class Game{
 		sb.append("Player Hand Value: " + pHandValue + "\n");
 		sb.append("Dealer Hand Value: " + dHandValue + "\n");
 		sb.append("Player Hand: " + pHand + "\n");
-		sb.append("Dealer Hand: " + dHand + "\n");
+		sb.append("Dealer Hand: " + dHand);
 		String output = sb.toString();
 		return output;
 
