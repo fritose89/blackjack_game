@@ -14,7 +14,8 @@ public class Game{
 	static Deck deck;
 	static Player player;
 	static Dealer dealer;
-	static ArrayList holdsCut;
+	static int betHolder;
+
 
 
 	public static void main(String[] args){
@@ -37,7 +38,9 @@ public class Game{
 		//Creating player object, intitalizing player arraylist to store hands
 		player = new Player();
 
-	
+		System.out.println("How much would you like to bet?");
+		int betAmount = scanner.nextInt();
+		betHolder = player.removeFunds(betAmount);
 		System.out.println();
 		
 
@@ -122,25 +125,27 @@ public class Game{
 			int pHandValue = player.playerHandValue();
 			int dHandValue = dealer.dealerHandValue();
 			int sizeOfDealerHand = dealer.size();
-			/*
-
-			if(pHandValue == 21 && dHandValue < 21 && sizeOfPlayerHand == 2){
-				System.out.println(Game.handCompareOutput());
-				System.out.println("Player has Blackjack, Dealer Loses.");
-
-			}
-			*/
+		
 			System.out.println(Game.handCompareOutput());
 
 			if((pHandValue == 21 || dHandValue == 21) && (sizeOfPlayerHand == 2 || sizeOfDealerHand == 2)){
 				if((pHandValue == 21 && dHandValue == 21) && (sizeOfPlayerHand == 2 && sizeOfDealerHand == 2)){
 					System.out.println("Both Player and Dealer have Blackjack this is a Push!");
+					player.addFunds(betHolder);
+					betHolder = 0;
 				}
 				else if(pHandValue == 21 && dHandValue < 21 && sizeOfPlayerHand == 2){
 					System.out.println("Player has Blackjack, Dealer Loses.");
+					int profit = (int) (betHolder * 1.5);
+					betHolder = betHolder + profit;
+					System.out.println("Player wins: " + betHolder);
+					player.addFunds(betHolder);
+					betHolder = 0;
+
 				}
 				else if(pHandValue != 21 && dHandValue == 21 && sizeOfDealerHand == 2){
 					System.out.println("Dealer has Blackjack, Player Loses.");
+					betHolder = 0;
 				}
 
 			}
@@ -148,24 +153,37 @@ public class Game{
 				if(dHandValue > 21 || pHandValue > 21){
 					if(dHandValue > 21 && pHandValue > 21){
 						System.out.println("Dealer and Player have busted out.");
+						betHolder = 0;
 					}
 					else if(pHandValue > 21 && dHandValue < 21){
 						System.out.println("Player has busted out, Dealer Wins!");
+						betHolder = 0;
 					}
 					else if(dHandValue > 21 && pHandValue < 21){
 						System.out.println("Dealer Busts Out, Player Wins!");
+						betHolder = betHolder * 2;
+						System.out.println("Player wins: " + betHolder);
+						player.addFunds(betHolder);
+						betHolder = 0;
 					}
 				}
 				else{
 					if(dHandValue == pHandValue){
 						System.out.println("Player and Dealer Hand are Equal, Push!");
+						player.addFunds(betHolder);
+						betHolder = 0;
 					}
 					else{
 						if(dHandValue > pHandValue){
 							System.out.println("Dealer Wins!");
+							betHolder = 0;
 						}
 						else{
 							System.out.println("Player Wins!");
+							betHolder = betHolder * 2;
+							System.out.println("Player wins: " + betHolder);
+							player.addFunds(betHolder);
+							betHolder = 0;
 						}
 					}
 				}
@@ -173,63 +191,17 @@ public class Game{
 			}
 
 
-			/*
-			else if(pHandValue == 21 && dHandValue == 21 && sizeOfPlayerHand == 2 && sizeOfDealerHand == 2){
-				System.out.println(Game.handCompareOutput());
-				System.out.println("Both Player and Dealer have Blackjack this is a Push!");
-
-			}
-			*/
-			/*
-			else if(pHandValue != 21 && dHandValue == 21 && sizeOfDealerHand == 2){
-				System.out.println(Game.handCompareOutput());
-				System.out.println("Dealer has Blackjack, Player Loses.");
-			}
-			*/
-			/*
-			else if((dHandValue > 21) && (pHandValue > 21)){
-				System.out.println(Game.handCompareOutput());
-				System.out.println("Dealer and Player have busted out.");
-			}
-			*/
-			/*
-			else if(pHandValue > 21){
-				System.out.println(Game.handCompareOutput());
-				System.out.println("Player has busted out, Dealer Wins!");
-			}
-
-			else if((dHandValue > 21) && (pHandValue <= 21)){
-				System.out.println(Game.handCompareOutput());
-				System.out.println("Dealer Busts Out, Player Wins!");
-			}
-			*/
-			/*
-			else if(dHandValue == pHandValue){
-				System.out.println(Game.handCompareOutput());
-				System.out.println("Player and Dealer Hand are Equal, Push!");
-			}
-			
-			else if((dHandValue <= 21) && (pHandValue <= 21)){
-				if(dHandValue > pHandValue){
-					System.out.println(Game.handCompareOutput());
-					System.out.println("Dealer Wins!");
-				}
-				else{
-					System.out.println(Game.handCompareOutput());
-					System.out.println("Player Wins!");
-				}
-			}
-			*/
-
 			System.out.println();
+			System.out.println("Player bankroll: $" + player.returnPlayerFunds());
 			System.out.println("Play again?: Yes or No");
 			String response = scanner.nextLine();
 			if(response.equals("No")){
 				break;
 			}
 			else{
-				
-				System.out.println();
+				System.out.println("How much would you like to bet?");
+				betAmount = scanner.nextInt();
+				betHolder = player.removeFunds(betAmount);
 				player.resetPlayerHand();
 				dealer.resetDealerHand();
 				continue;

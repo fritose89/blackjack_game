@@ -3,10 +3,27 @@ import java.util.*;
 public class Player{
 
 	
-	List<Card> playerHand;
+	private List<Card> playerHand;
+	private int playerBank;
 
 	public Player(){
 		playerHand = new ArrayList<>();
+		playerBank = 500;
+	}
+
+	public void addFunds(int fundsToAdd){
+		playerBank = playerBank + fundsToAdd;
+	}
+
+	public int removeFunds(int fundsToRemove){
+		playerBank = playerBank - fundsToRemove;
+		int difference = (playerBank + fundsToRemove) - playerBank;	
+		return difference;
+
+	}
+
+	public int returnPlayerFunds(){
+		return playerBank;
 	}
 
 	public void recieveCardPlayer(Card card){

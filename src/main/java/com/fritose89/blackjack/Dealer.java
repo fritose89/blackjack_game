@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Dealer{
 
-	List<Card> dealerHand;
+	private List<Card> dealerHand;
 	
 
 	public Dealer(){
