@@ -1,3 +1,5 @@
+package com.fritose89.blackjack;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.security.SecureRandom;
@@ -11,10 +13,10 @@ class MyException extends Exception{
 public class Game{
 
 	
-	static Deck deck;
-	static Player player;
-	static Dealer dealer;
-	static int betHolder;
+	public static Deck deck;
+	public static Player player;
+	public static Dealer dealer;
+	public static int betHolder;
 
 
 

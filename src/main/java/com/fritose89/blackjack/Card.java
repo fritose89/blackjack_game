@@ -1,3 +1,5 @@
+package com.fritose89.blackjack;
+
 public class Card{
 
 	private final Rank rank;

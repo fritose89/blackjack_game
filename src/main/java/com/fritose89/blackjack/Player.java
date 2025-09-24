@@ -1,3 +1,5 @@
+package com.fritose89.blackjack;
+
 import java.util.*;
 
 public class Player{
@@ -61,7 +63,7 @@ public class Player{
 			}
 		}
 
-		if(playerHandValue > 21 && aceCount > 0){
+		while(playerHandValue > 21 && aceCount > 0){
 			playerHandValue -= 10;
 			aceCount--;
 		}

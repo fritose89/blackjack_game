@@ -1,8 +1,10 @@
+package com.fritose89.blackjack;
 import java.util.*;
 
 public class Dealer{
 
 	private List<Card> dealerHand;
+
 	
 
 	public Dealer(){
@@ -49,7 +51,7 @@ public class Dealer{
 			}
 		}
 
-		if(dealerHandValue > 21 && aceCount > 0){
+		while(dealerHandValue > 21 && aceCount > 0){
 			dealerHandValue -= 10;
 			aceCount--;
 		}

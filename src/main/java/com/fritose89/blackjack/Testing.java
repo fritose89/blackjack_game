@@ -1,3 +1,5 @@
+package com.fritose89.blackjack;
+
 import java.security.SecureRandom;
 
 public class Testing{

@@ -1,3 +1,4 @@
+package com.fritose89.blackjack;
 import java.util.*;
 import java.security.SecureRandom;
 
