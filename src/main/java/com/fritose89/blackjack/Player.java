@@ -77,6 +77,27 @@ public class Player{
 
 	public int size(){
 		return playerHand.size();
+	}
+
+	public boolean pHasBlackJack(){
+		int pHandValue = this.playerHandValue();
+		int size = playerHand.size();
+		if(pHandValue == 21 && size == 2){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	public boolean pHasBusted(){
+		int pHandValue = this.playerHandValue();
+		if(pHandValue > 21){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}	
 	
 

@@ -133,13 +133,13 @@ public class Game{
 		
 			System.out.println(Game.handCompareOutput());
 
-			if((pHandValue == 21 || dHandValue == 21) && (sizeOfPlayerHand == 2 || sizeOfDealerHand == 2)){
-				if((pHandValue == 21 && dHandValue == 21) && (sizeOfPlayerHand == 2 && sizeOfDealerHand == 2)){
+			if(player.pHasBlackJack() == true || dealer.dHasBlackJack() == true){
+				if(player.pHasBlackJack() == true && dealer.dHasBlackJack() == true){
 					System.out.println("Both Player and Dealer have Blackjack this is a Push!");
 					player.addFunds(betHolder);
 					betHolder = 0;
 				}
-				else if(pHandValue == 21 && dHandValue < 21 && sizeOfPlayerHand == 2){
+				else if(player.pHasBlackJack() == true && dealer.dHasBlackJack() == false){
 					System.out.println("Player has Blackjack, Dealer Loses.");
 					int profit = (int) (betHolder * 1.5);
 					betHolder = betHolder + profit;
@@ -148,23 +148,23 @@ public class Game{
 					betHolder = 0;
 
 				}
-				else if(pHandValue != 21 && dHandValue == 21 && sizeOfDealerHand == 2){
+				else if(player.pHasBlackJack() == false && dealer.dHasBlackJack() == true){
 					System.out.println("Dealer has Blackjack, Player Loses.");
 					betHolder = 0;
 				}
 
 			}
 			else{
-				if(dHandValue > 21 || pHandValue > 21){
-					if(dHandValue > 21 && pHandValue > 21){
+				if(player.pHasBusted() == true || dealer.dHasBusted() == true){
+					if(player.pHasBusted() == true && dealer.dHasBusted() == true){
 						System.out.println("Dealer and Player have busted out.");
 						betHolder = 0;
 					}
-					else if(pHandValue > 21 && dHandValue < 21){
+					else if(player.pHasBusted() == true && dealer.dHasBusted() == false){
 						System.out.println("Player has busted out, Dealer Wins!");
 						betHolder = 0;
 					}
-					else if(dHandValue > 21 && pHandValue < 21){
+					else if(dealer.dHasBusted() == true && player.pHasBusted() == false){
 						System.out.println("Dealer Busts Out, Player Wins!");
 						betHolder = betHolder * 2;
 						System.out.println("Player wins: " + betHolder);

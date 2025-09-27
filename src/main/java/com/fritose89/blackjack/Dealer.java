@@ -66,6 +66,27 @@ public class Dealer{
 		return dealerHand.size();
 	}
 
+	public boolean dHasBlackJack(){
+		int dHandValue = this.dealerHandValue();
+		int size = dealerHand.size();
+		if(dHandValue == 21 && size == 2){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	public boolean dHasBusted(){
+		int dHandValue = this.dealerHandValue();
+		if(dHandValue > 21){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
 	
 
 	
