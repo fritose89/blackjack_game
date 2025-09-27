@@ -1,4 +1,4 @@
-package com.fritose89.blackjack;
+//package com.fritose89.blackjack;
 
 public enum Suit{
 	HEARTS("Hearts"), DIAMONDS("Diamonds"), CLUBS("Clubs"), SPADES("Spades");
