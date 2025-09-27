@@ -7,15 +7,20 @@ public class Deck{
 	SecureRandom random = new SecureRandom();
 	static Card cutCard = new Card(Rank.ZERO, Suit.CUT);
 	private boolean reshuffleNeeded;
+	private int numDecks;
 	
 
 	//Deck constructor
 	public Deck(int numDecks){
+		this.numDecks = numDecks;
 		buildDeck(numDecks);
 	}
 
-	public void rebuildDeck(int numDecks){
+	public void rebuildDeck(){
+		deck.clear();
 		buildDeck(numDecks);
+		System.out.println("The cut card has been dealt we will reshuffle the deck!");
+
 	}
 
 	private void buildDeck(int numDecks){
@@ -72,10 +77,7 @@ public class Deck{
 		return reshuffleNeeded;
 	}
 
-	public void resetDeck(){
-		deck.clear();
-	}
-
+	
 
 
 

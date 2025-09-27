@@ -213,12 +213,7 @@ public class Game{
 				player.resetPlayerHand();
 				dealer.resetDealerHand();
 				if(deck.isReshuffleNeeded() == true){
-					deck.resetDeck();
-					System.out.println("The cut card has been dealt we will reshuffle the deck!");
-					System.out.println("Select the number of decks you wish to play with!");
-					int result = scanner.nextInt();
-					scanner.nextLine();
-					deck.rebuildDeck(result);
+					deck.rebuildDeck();
 				}
 				continue;
 			}
