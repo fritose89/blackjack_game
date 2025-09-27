@@ -3,13 +3,13 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.security.SecureRandom;
-
+/*
 class MyException extends Exception{
 	public MyException(String m){
 		super(m);
 	}
 }
-
+*/
 public class Game{
 
 	
@@ -78,7 +78,8 @@ public class Game{
 						
 						System.out.println("Player may Hit or Stand");
 						String response = scanner.nextLine();
-						
+						//scanner.nextLine();
+						/*
 						try{
 							if(!response.equals("Hit") && !response.equals("Stand")){
 								throw new MyException("Please enter either Hit or Stand");
@@ -86,10 +87,12 @@ public class Game{
 							}
 							
 						}
+						
 						catch(MyException e){
 							System.out.println(e.getMessage());
 							System.out.println();
 						}
+						*/
 						if(response.equals("Hit")){
 							player.recieveCardPlayer(deck.deal());
 							System.out.println();
