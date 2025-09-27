@@ -50,8 +50,8 @@ public class Game{
 
 		
 		
-			
-		while(true){
+		boolean gameActive = true;
+		while(gameActive){
 
 
 			
@@ -64,8 +64,8 @@ public class Game{
 				  System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
 
 		
-
-			while(true){
+			boolean playerTurn = true;
+			while(playerTurn){
 				System.out.println("Player Hand: " + player.returnPlayerHandUser());
 				//System.out.println("Dealer Hand: " + dealer.showDealerUpCard());
 				System.out.println();
@@ -109,8 +109,10 @@ public class Game{
 			System.out.println("Player Hand: " + player.returnPlayerHandUser());
 			System.out.println("Dealer Hand: " + dealer.returnDealerHandUser());
 			System.out.println();
+
 			
 			int sizeOfPlayerHand = player.size();
+		
 			while(true){
 				if(player.playerHandValue() == 21 && dealer.dealerHandValue() <= 21 && sizeOfPlayerHand == 2){
 					break;
@@ -201,7 +203,8 @@ public class Game{
 			System.out.println("Play again?: Yes or No");
 			String response = scanner.nextLine();
 			if(response.equals("No")){
-				break;
+				gameActive = false;
+				System.out.println("Thanks for playing!");
 			}
 			else{
 				System.out.println("How much would you like to bet?");
@@ -209,6 +212,14 @@ public class Game{
 				betHolder = player.removeFunds(betAmount);
 				player.resetPlayerHand();
 				dealer.resetDealerHand();
+				if(deck.isReshuffleNeeded() == true){
+					deck.resetDeck();
+					System.out.println("The cut card has been dealt we will reshuffle the deck!");
+					System.out.println("Select the number of decks you wish to play with!");
+					int result = scanner.nextInt();
+					scanner.nextLine();
+					deck.rebuildDeck(result);
+				}
 				continue;
 			}
 		}
